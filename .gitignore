@@ -1,7 +1,7 @@
 # Ignore everything in the root except the "wp-content" directory.
 /*
 !.gitignore
-#!wp-content/
+!wp-content/
 
 # Ignore everything in the "wp-content" directory, except the "mu-plugins"
 # and "themes" directories.
@@ -13,6 +13,3 @@ wp-content/*
 # specify (see the commented-out example for a hint on how to do this.)
 wp-content/themes/*
 !wp-content/themes/eventhorizon/
-
-/uploads/
-/app/public/

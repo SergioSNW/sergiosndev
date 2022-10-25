@@ -1,0 +1,20 @@
+html {
+  background-color: #CCC;
+}
+
+body {
+  font: 100% Helvetica, sans-serif;
+  color: #F40;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: #FFF;
+}
+nav li {
+  display: inline-block;
+}
+
+/*# sourceMappingURL=oo1.css.map */

@@ -1,0 +1,37 @@
+WebPack: Soporte CSS. Comentarios sobre modulos instalados (package.json)
+    Parece que el plugin "optimize-css-assets-webpack-plugin" en WebPack 5.0++,
+    ahora es "css-minimizer-webpack-plugin" 
+    Instalado el nuevo y desinstalado el obsoleto con el cmd 
+    > npm uninstall --save-dev optimize-css-assets-webpack-plugin
+    He tenido que sustituir la constante siguiente en <webpack.config.js>
+    const OptimizeCSSAssetsPlugin = require("css-minimizer-webpack-plugin");
+    // const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+
+
+webPack: Para la instalacion de SCSS y SASS
+    He instalado/desinstalado. (solo queda el mini-css......)
+        >> npm install   --save-dev mini-css-extract-plugin
+        >> npm uninstall --save-dev css-minimizer-webpack-plugin
+        >> npm uninstall --save-dev optimize-css-assets-webpack-plugin
+        >> npm uninstall --save-dev node-sass
+
+    Tambien desinstalo sass, pero al compilar lo pide, asi que reinstalo. Ahora pasa bien
+
+    Curioso: Al correr >> npx webpack --watch 
+    detecta cuando guardo fich: js/sass/css pero no veo que regenere el fich.Output 
+    COMPROBAR que al navegar si reconoce los cambios introducidos
+    
+    Siempre que se compila de nuevo, general el fichero main.css en el raiz del tema. es
+    posible que el watch actualice este fichero y el main-min.js lo referencie (¿¿¿???)
+ 
+
+webPack: Para la instalacion de BABEL 
+    He ajustado todo a la version 7 de Babel (antes tenia un batiburrillo)
+    El @babel/core ya estaba instalado. Luego, he instalado/desinstalado:
+        npm install   --save-dev @babel/preset-env
+        npm install   --save-dev @babel/cli
+        npm uninstall --save-dev babel-core
+        npm uninstall --save-dev babel-preset-env
+
+    El @babel/cli es para probar la conversion: npx babel ./src/eventhorizon.js -o ./src/out.babel
+    Si todo va a ser automatico, no sería necesario

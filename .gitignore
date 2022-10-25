@@ -1,24 +1,18 @@
-# Ignore everything in the root except the "wp-content" directory.
+# Ignore everything in the root except the "app/public" directory.
 /*
 !.gitignore
-#!wp-content/
 !app/
 
-# Ignore everything in the "wp-content" directory, except the "mu-plugins"
-# and "themes" directories.
+#Ignore everything within public's root except for wp-content.
 app/public/*
 !wp-content
 
+#Ignore everything within wp-content except for must-use-plugins and the themes folder.
 app/public/wp-content/*
 !mu-plugins/
 !themes/
 
+#Within the themes ignore any other theme that is not eventhorizon (the parent default 2022).
 app/public/wp-content/themes/*
 !eventhorizon/
-#!wp-content/mu-plugins/
-#!wp-content/themes/
 
-# Ignore everything in the "themes" directory, except the themes you
-# specify (see the commented-out example for a hint on how to do this.)
-#wp-content/themes/*
-#!wp-content/themes/eventhorizon/

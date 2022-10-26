@@ -16,3 +16,7 @@ app/public/wp-content/*
 app/public/wp-content/themes/*
 !eventhorizon/
 
+#Mios (JC) locales
+app/sql
+*.code-workspace
+.gitignore

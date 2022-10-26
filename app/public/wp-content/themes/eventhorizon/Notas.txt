@@ -25,7 +25,7 @@ webPack: Para la instalacion de SCSS y SASS
     posible que el watch actualice este fichero y el main-min.js lo referencie (¿¿¿???)
  
 
-webPack: Para la instalacion de BABEL 
+webPack: Para la instalacion de BABEL
     He ajustado todo a la version 7 de Babel (antes tenia un batiburrillo)
     El @babel/core ya estaba instalado. Luego, he instalado/desinstalado:
         npm install   --save-dev @babel/preset-env
@@ -35,3 +35,31 @@ webPack: Para la instalacion de BABEL
 
     El @babel/cli es para probar la conversion: npx babel ./src/eventhorizon.js -o ./src/out.babel
     Si todo va a ser automatico, no sería necesario
+
+
+Pruebas de componentes en local. Soporte para componentes LIT (escritos en js o en ts) 
+    Instalaciones/desinstalaciones:
+    a) Usadas
+        npm install --save     lit
+        npm install --save     clean-webpack-plugin  (Limpia el directorio dist antes de cada regeneracion)
+        npm install --save-dev style-loader
+        npm install --save-dev css-minimizer-webpack-plugin  (Reduce el tamaño de CSS)
+        npm install --save-dev compression-webpack-plugin    (Comprime los packs - .gz)
+        npm install --save-dev typescript ts-loader
+    B) Sin uso actualmente, pero dejadas para ver posible utililidad futura
+        npm install -D         webpack-dev-server   (Servidor-alternativa al GO-LIVE de vscode)
+        npm install --save-dev copy-webpack-plugin  (Plugin para copiar ficheros)
+        npm install --save-dev html-webpack-plugin  (Inyecta los packs en un html-template)
+    Definido metodo de trabajo. Descrito en: ./src/@components/webpack.config.@libComponents.js
+
+
+Bibliografia encontrada con posibilidades
+    - pagina para hacer un plugin de WordPress
+    https://productdesigner.es/curso/como-crear-una-web-app-con-wordpress-y-react-usando-frontity/anexo-2-creando-un-plugin-de-wordpress-para-nuestra-funcionalidad/
+
+
+PENDIENTE:
+pruebas debuger + mapas
+opcion webpack: devServer
+uso './pr_Juan_src/js/entryPoint.js' como punto de entrada (internamente llama a todo lo que quiero empaquetar)
+generar doble paquete de js: ES5 y ES6, con tecnica para que cada navegador cargue lo que entienda

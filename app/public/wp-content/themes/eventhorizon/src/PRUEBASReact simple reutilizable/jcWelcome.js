@@ -16,5 +16,5 @@ function Acceder(props) {
 
 ReactDOM.render(
   <Acceder tieneAcceso={false} />,
-  document.getElementById('lolo')
+  document.getElementById('like_button_container')
 );

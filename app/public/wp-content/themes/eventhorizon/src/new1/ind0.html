@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+       <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
+    </head>
+    <body>
+      <div id="app" name="Jose"></div>
+      <script type="text/babel">
+        function MyComponent(props) {
+          return (
+            <div>
+              <p>Hola, {props.name}</p>
+              <p>Que tengas un buen dia!</p>
+            </div>
+          );
+        }        
+        ReactDOM.render(<MyComponent name="Pepe" />, 
+            document.getElementById('app'));
+      </script>
+    </body>
+</html>

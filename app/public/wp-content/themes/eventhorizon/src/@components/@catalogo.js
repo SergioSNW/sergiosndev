@@ -1,5 +1,6 @@
 import './my-element';
 import './simple-greeting';
 import './my-element2';
-// import '../../node_modules/dile-input/dile-input.js';
+import './index.js';
+import './MyComponent.js';
 // import './tu-element.ts';

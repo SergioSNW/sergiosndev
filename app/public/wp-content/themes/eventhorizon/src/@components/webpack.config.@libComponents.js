@@ -19,6 +19,7 @@
 const path = require('path');
 const ReduceSizeCSS = require('css-minimizer-webpack-plugin');
 const StatsReportPlugin = require("webpack-stats-report").StatsReportPlugin;
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry:  './src/@components/@catalogo.js',
@@ -47,6 +48,14 @@ module.exports = {
         use: 'html-loader'   
       },
       {
+        test: /\.js$/, 
+        exclude: /node_modules/,
+        use: 'babel-loader',
+        // options: {
+        //   presets: ['@babel/preset-env', '@babel/preset-react']
+        // }
+      },
+      {
         test: /\.tsx?$/, 
         exclude: /node_modules/,
         use: 'ts-loader',
@@ -62,6 +71,9 @@ module.exports = {
       //options
       title: "Composicion y volumenes de @libComponents (plugin: webpack-stats-report)",
       output: "./stats-lastBuild-@libComponents.html"
-    })
+    }),
+    // new HtmlWebpackPlugin({
+    //   template: path.join(__dirname, "src/new1", "index.html"),
+    // }),
   ]
 }

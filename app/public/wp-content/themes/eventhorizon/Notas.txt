@@ -53,6 +53,60 @@ Pruebas de componentes en local. Soporte para componentes LIT (escritos en js o 
     Definido metodo de trabajo. Descrito en: ./src/@components/webpack.config.@libComponents.js
 
 
+Pruebas para soporte de React 
+
+    Instalaciones/desinstalaciones:
+    a) Usadas
+        npm install -D @babel/preset-react (transpilador de JSX)
+        npm install -D react
+        npm install -D react-dom
+
+    He hecho varias pruebas para que el plugin html-webpack-plugin
+    genere un html, tanto en base como con template, y no
+    he conseguido que funciones. Por el momento, abandonado.
+
+    El soporte para React (v18) ya funciona, incluso usando JSX.
+    Probado con componentes funcionales (para mi, mas intuitivo) y con
+    componentes de clase (un rollo en el uso de this, bind y paso de
+    funciones hacia abajo).
+    La principal diferencia con versiones anteriores radica en el metodo para
+    renderizar la aplicacion:
+    Antes:
+        const container = document.getElementById('app');
+        render(<App />, container);
+    Ahora:
+        const root = createRoot(document.querySelector("#app"))
+        root.render(<App />)
+
+    He alterado un poco la carpeta /src.
+    Dejo sin operatividad el src/@components
+    Ahora los componentes estan en src/js/components
+    Y los ficheros maestros son:
+        - src/js/indexL.js para montar los componentes Lit que se van a usar
+        - src/js/indexR.js para montar la aplicacion React que se va a usar
+    Estos ficheros generan un fichero bundle, por cada fichero maestro, en dist/ llamados
+    indexL.bundle e indexR.bundle cuando compilamos con <npx webpack>
+
+    Para arrancar un servidor de pruebas, se debe ejecutar <npx webpack serve>.
+    Su document-root es public, que es el directorio que debe contener un index.html para 
+    realizar las pruebas. Dicho html debe tener dos lineas con etiqueta src justo antes de
+    cerrar el body.
+            <script src="indexR.bundle"></script>
+            <script src="indexL.bundle"></script>
+        </body>
+    Siempre apuntando estas librerias (aunque no lo estén) a public. Por lo que comprobado,
+    el comando que arranca el servidor usa el webpack.config.js para compilar los fich.maestros
+    pero el resultado no lo deja en dist sino que lo pone en memoria (como si estuviesen dentro de
+    /public) y mantiene abierto un watch para que cualquier cambio en el html o en los bundles,   
+    en cuanto se guarde actualice la memoria y refresque la pagina que tengamos abierta apuntando 
+    al servidor (http://localhost:8081/)
+
+    Incluido un nuevo script en package.json. Invocación: npm run comp
+    El antiguo (libcomp) lo dejo hasta hablar con Sergio.
+
+
+
+
 Bibliografia encontrada con posibilidades
     - pagina para hacer un plugin de WordPress
     https://productdesigner.es/curso/como-crear-una-web-app-con-wordpress-y-react-usando-frontity/anexo-2-creando-un-plugin-de-wordpress-para-nuestra-funcionalidad/

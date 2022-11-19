@@ -22,3 +22,5 @@ app/public/wp-content/themes/eventhorizon/src/@components/@libComponents.js
 app/sql
 *.code-workspace
 .gitignore
+app/public/wp-content/themes/eventhorizon/dist/
+app/public/wp-content/themes/eventhorizon/public/stats-lastBuild.html

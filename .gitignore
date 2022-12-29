@@ -19,4 +19,4 @@ app/public/wp-content/themes/*
 app/public/wp-content/themes/eventhorizon/public/stats-lastBuild.html
 app/sql/local-backup-addon-database-dump.sql
 app/sql/local.sql
-app/public/wp-content/themes/eventhorizon/build/
+app/public/wp-content/themes/eventhorizon/build/*

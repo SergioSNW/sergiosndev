@@ -174,19 +174,11 @@ function makeNotePrivate($data, $postarr) {
   return $data;
 }
 
-class JSXBlock {
-  function __construct($name) {
-    $this->name = $name;
-    add_action('init', [$this, 'onInit']);
-  }
-
-  function onInit() {
-    wp_register_script($this->name, get_stylesheet_directory_uri() . "/build/{$this->name}.js", array('wp-blocks', 'wp-editor'));
-    register_block_type("ourblocktheme/{$this->name}", array(
-      'editor_script' => $this->name
-    ));
-  }
+function bannerBlock() {
+  wp_register_script('bannerBlockScript', get_stylesheet_directory_uri() . '/build/banner.js', array('wp-blocks', 'wp-editor'));
+  register_block_type("ourblocktheme/banner", array(
+    'editor_script' => 'bannerBlockScript'
+  ));
 }
 
-new JSXBlock('banner');
-new JSXBlock('genericheading');
+add_action('init', 'bannerBlock');

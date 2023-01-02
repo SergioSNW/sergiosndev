@@ -2,6 +2,12 @@ import {InnerBlocks} from "@wordpress/block-editor"
 
 wp.blocks.registerBlockType("ourblocktheme/banner", {
   title: "Banner",
+  supports: {
+    align: ["full"]
+  },
+  attributes: {
+    align: {type: "string", default: "full"},
+  },
   edit: EditComponent,
   save: SaveComponent
 })
@@ -24,7 +30,7 @@ function EditComponent() {
     <div className="page-banner">
       <div className="page-banner__bg-image" style={{ backgroundImage: "url('/wp-content/themes/eventhorizon/images/library-hero.jpg')" }}></div>
       <div className="page-banner__content container t-center c-white">
-        <InnerBlocks allowedBlocks={["ourblocktheme/genericheading"]}/>
+        <InnerBlocks allowedBlocks={["ourblocktheme/genericheading", "ourblocktheme/genericbutton"]}/>
       </div>
     </div>
   )

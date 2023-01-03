@@ -196,7 +196,7 @@ class JSXBlock {
 
     if ($this->renderCallback) {
       $ourArgs['render_callback'] = [$this, 'ourRenderCallback'];
-    };
+    }
 
     register_block_type("ourblocktheme/{$this->name}", $ourArgs);
   }

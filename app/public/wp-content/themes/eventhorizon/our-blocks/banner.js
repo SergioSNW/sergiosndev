@@ -1,12 +1,13 @@
-import {InnerBlocks} from "@wordpress/block-editor"
+import { InnerBlocks } from "@wordpress/block-editor"
+import { registerBlockType } from "@wordpress/blocks"
 
-wp.blocks.registerBlockType("ourblocktheme/banner", {
+registerBlockType("ourblocktheme/banner", {
   title: "Banner",
   supports: {
     align: ["full"]
   },
   attributes: {
-    align: {type: "string", default: "full"},
+    align: { type: "string", default: "full" }
   },
   edit: EditComponent,
   save: SaveComponent
@@ -15,7 +16,7 @@ wp.blocks.registerBlockType("ourblocktheme/banner", {
 function EditComponent() {
   const useMeLater = (
     <>
-      <h1 className="headline headline--large">Welcome!!!</h1>
+      <h1 className="headline headline--large">Welcome!</h1>
       <h2 className="headline headline--medium">We think you&rsquo;ll like it here.</h2>
       <h3 className="headline headline--small">
         Why don&rsquo;t you check out the <strong>major</strong> you&rsquo;re interested in?
@@ -28,22 +29,14 @@ function EditComponent() {
 
   return (
     <div className="page-banner">
-      <div className="page-banner__bg-image" style={{ backgroundImage: "url('/wp-content/themes/eventhorizon/images/library-hero.jpg')" }}></div>
+      <div className="page-banner__bg-image" style={{ backgroundImage: "url('/wp-content/themes/fictional-block-theme/images/library-hero.jpg')" }}></div>
       <div className="page-banner__content container t-center c-white">
-        <InnerBlocks allowedBlocks={["ourblocktheme/genericheading", "ourblocktheme/genericbutton"]}/>
+        <InnerBlocks allowedBlocks={["ourblocktheme/genericheading", "ourblocktheme/genericbutton"]} />
       </div>
     </div>
   )
 }
 
 function SaveComponent() {
-  return (
-    <div className="page-banner">
-      <div className="page-banner__bg-image" style={{ backgroundImage: "url('/wp-content/themes/eventhorizon/images/library-hero.jpg')" }}></div>
-      <div className="page-banner__content container t-center c-white">
-        <InnerBlocks.Content />
-        <h6>Sitio creado por Sergio EseEne (www.developer.com)</h6>
-      </div>
-    </div>
-  )
+  return <InnerBlocks.Content />
 }

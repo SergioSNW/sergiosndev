@@ -195,10 +195,28 @@ class JSXBlock {
     );
 
     if ($this->renderCallback) {
-      $ourArgs['render_callback'] = [$this, 'ourRenderCallback'];
+      
+      register_block_type(
+        "ourblocktheme/{$this->name}", 
+        [
+          'editor_script'   => $this->name,
+          'render_callback' => [$this, 'ourRenderCallback']
+          ]
+        );
+      
+      // $ourArgs['render_callback'] = [$this, 'ourRenderCallback'];
+    } else {
+        
+        register_block_type(
+          "ourblocktheme/{$this->name}", 
+          [
+            'editor_script' => $this->name
+          ]
+        );
+
     };
 
-    register_block_type("ourblocktheme/{$this->name}", $ourArgs);
+    // register_block_type("ourblocktheme/{$this->name}", $ourArgs);
   }
 }
 

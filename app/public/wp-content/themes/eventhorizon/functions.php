@@ -190,33 +190,22 @@ class JSXBlock {
   function onInit() {
     wp_register_script($this->name, get_stylesheet_directory_uri() . "/build/{$this->name}.js", array('wp-blocks', 'wp-editor'));
     
-    $ourArgs = array(
-      'editor_script' => $this->name
-    );
-
     if ($this->renderCallback) {
-      
       register_block_type(
         "ourblocktheme/{$this->name}", 
         [
           'editor_script'   => $this->name,
           'render_callback' => [$this, 'ourRenderCallback']
-          ]
-        );
-      
-      // $ourArgs['render_callback'] = [$this, 'ourRenderCallback'];
+        ]
+      );
     } else {
-        
-        register_block_type(
-          "ourblocktheme/{$this->name}", 
-          [
-            'editor_script' => $this->name
-          ]
-        );
-
+      register_block_type(
+        "ourblocktheme/{$this->name}", 
+        [
+          'editor_script' => $this->name
+        ]
+      );
     };
-
-    // register_block_type("ourblocktheme/{$this->name}", $ourArgs);
   }
 }
 

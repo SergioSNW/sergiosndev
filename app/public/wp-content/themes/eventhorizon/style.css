@@ -188,3 +188,55 @@ body > .is-root-container > .wp-block-template-part > .wp-block-cover,
 .has-bree-serif {
 	font-family: "Bree Serif", sans-serif !important;
 }
+
+
+/* Headline module copy on CSS */
+.headline {
+	margin: 0;
+	font-weight: 300;
+}
+
+.headline--large {
+	 font-size: 3.6rem;
+}
+
+.headline--large-medium {
+	 font-size: 5rem;
+	 margin: 0 0 1rem 0;
+ }
+
+.headline--medium {
+	 font-size: 1.9rem;
+	 margin-bottom: 0.75rem;
+}
+
+.headline--small-plus {
+	 font-family: "Roboto", sans-serif;
+	 font-size: 1.6875rem;
+	 font-weight: 400;
+	 margin-bottom: 1.9rem;
+ }
+
+.headline--small {
+	 font-size: 1.2rem;
+	 margin-bottom: 1.9rem;
+}
+
+.headline--smaller {
+	 font-size: 1.5rem;
+ }
+
+.headline--tiny {
+	 font-family: "Roboto", sans-serif;
+	 font-size: 1.3875rem;
+	 margin-bottom: 0.25rem;
+ }
+
+.headline--post-title a {
+	 text-decoration: none;
+ }
+
+.headline--post-title a:hover {
+	 text-decoration: underline;
+ }
+}

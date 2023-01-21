@@ -1,0 +1,23 @@
+.rainbow-text {
+  display: inline-block;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: initial;
+  background-image: linear-gradient(
+                  90deg,
+                  #ffe993,
+                  #eb831c,
+                  #CA2266,
+                  #ffb6ff,
+                  #2C528C
+  );
+  will-change: transform;
+  padding-top: 0.5px;
+  overflow: hidden;
+  background-color: #ffe993;
+  margin-top: 29px;
+  font-size: 64px !important;
+  justify-items: center;
+  font-family: "Bree Serif", sans-serif;
+  font-weight: 500 !important;
+}

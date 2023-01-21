@@ -218,3 +218,7 @@ nav ul {
 nav li {
   display: inline-block;
 }
+
+root {
+  color: red;
+}

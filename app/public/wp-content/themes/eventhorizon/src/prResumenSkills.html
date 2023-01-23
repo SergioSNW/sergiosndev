@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Array Methods</h2>
+<h2>concat()</h2>
+<p>The concat() method merges (concatenates) arrays:</p>
+
+<p id="demo"></p>
+
+<script>
+const sep     = "=";
+const max     = 6;
+var   arrWork = ["Ajo+7"];
+const myGirls = ["HTML+4", "Ingles+B4"];
+const myBoys  = ["HTML+1", "CSS+3", "CSS+2"];
+
+arrWork = arrWork.concat(myGirls);
+arrWork = arrWork.concat(myBoys);
+arrWork = arrWork.concat(myBoys);
+arrWork = arrWork.concat(myGirls);
+arrWork.sort();
+
+let sum = arrWork.map(myFunction);
+sum = sum.filter(i => i);
+
+function myFunction(value, i, arr) {
+if (i == 0) {
+    it = value.split("+");
+    cmp = it[0];
+    total = ctlCuantif(it[1],0);
+}
+
+if (i >= arr.length - 1) {
+    return cmp + "@" + total ;
+}
+
+it = arr[i+1].split("+");
+
+console.log( i );
+console.log( it);
+
+console.log( i + ":" + cmp );
+if (it[0] == cmp) {
+    total = ctlCuantif(it[1],total);
+    return 0;
+} else {         
+    result = cmp + "=" + total 
+    total = ctlCuantif(it[1],0);
+    cmp = it[0];
+    return result;
+}   
+}
+
+
+function ctlCuantif(value, tot) {
+console.log(">>" + value);
+xVal = Number(value);
+if (isNaN(xVal)) {
+    return value;
+} 	
+tot += xVal;
+if (tot > max) {
+    return max;
+}
+return tot;
+}
+
+console.log(sum);
+document.getElementById("demo").innerHTML = arrWork +  "<br>" + sum;
+</script>
+
+</body>
+</html> 

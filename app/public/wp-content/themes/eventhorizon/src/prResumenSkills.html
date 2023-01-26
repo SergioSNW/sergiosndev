@@ -1,74 +1,92 @@
 <!DOCTYPE html>
 <html>
-<body>
+  <body>
+    <h2>JavaScript Test Resumen Skills</h2>
+    <h2>Version 1.0</h2>
 
-<h2>JavaScript Array Methods</h2>
-<h2>concat()</h2>
-<p>The concat() method merges (concatenates) arrays:</p>
+    <p id="demo"></p>
 
-<p id="demo"></p>
+    <script>
+      var arrWork = [
+        "Español+Nativo",
+        "Guapo+0",
+        "React-JS+2",
+        "Trabajo en equipo+0",
+      ];
+      const myGirls = ["HTML+4", "Ingles+Practicamente bilingue"];
+      const myBoys = ["HTML+1", "CSS+4", "Ordenado+0", "Apache+De p... madre"];
 
-<script>
-const sep     = "=";
-const max     = 6;
-var   arrWork = ["Ajo+7"];
-const myGirls = ["HTML+4", "Ingles+B4"];
-const myBoys  = ["HTML+1", "CSS+3", "CSS+2"];
+      // Recopilacion de todos los skills de todos los cursos
+      arrWork = arrWork.concat(myGirls);
+      arrWork = arrWork.concat(myBoys);
+      arrWork = arrWork.concat(myBoys);
+      arrWork = arrWork.concat(myGirls);
+      // Generacion del summary
+      const sum = masterSkills(arrWork);
 
-arrWork = arrWork.concat(myGirls);
-arrWork = arrWork.concat(myBoys);
-arrWork = arrWork.concat(myBoys);
-arrWork = arrWork.concat(myGirls);
-arrWork.sort();
+      function masterSkills(bigArray) {
+        bigArray = bigArray.sort();
+        bigArray = bigArray.map(resumeSkills);
+        console.log(
+          "Fase-1: Marcados los repetidos. Quedan los acumulados como objetos y registado el tipo "
+        );
+        console.log(bigArray);
+        return bigArray.filter((v) => v);
+      }
 
-let sum = arrWork.map(myFunction);
-sum = sum.filter(i => i);
+      function resumeSkills(value, i, arr) {
+        if (i == 0) {
+          it = value.split("+");
+          cmp = it[0];
+          total = ctlCuantif(it[1], 0);
+        }
 
-function myFunction(value, i, arr) {
-if (i == 0) {
-    it = value.split("+");
-    cmp = it[0];
-    total = ctlCuantif(it[1],0);
-}
+        if (i >= arr.length - 1) {
+          return genOut(cmp, total);
+        }
 
-if (i >= arr.length - 1) {
-    return cmp + "@" + total ;
-}
+        it = arr[i + 1].split("+");
+        if (it[0] == cmp) {
+          total = ctlCuantif(it[1], total);
+          return false;
+        } else {
+          result = genOut(cmp, total);
+          total = ctlCuantif(it[1], 0);
+          cmp = it[0];
+          return result;
+        }
+      }
 
-it = arr[i+1].split("+");
+      function ctlCuantif(value, tot, MAX = 5) {
+        xVal = Number(value);
+        if (isNaN(xVal)) return value;
+        tot += xVal;
+        if (tot > MAX) return MAX;
+        return tot;
+      }
 
-console.log( i );
-console.log( it);
+      function genOut(item, nota) {
+        const type = nota == 0 ? "habi" : nota > 0 ? "cono" : "idio";
+        return { type, item, nota };
+      }
 
-console.log( i + ":" + cmp );
-if (it[0] == cmp) {
-    total = ctlCuantif(it[1],total);
-    return 0;
-} else {         
-    result = cmp + "=" + total 
-    total = ctlCuantif(it[1],0);
-    cmp = it[0];
-    return result;
-}   
-}
+      function viewTipo(array, tipo) {
+        array = array.filter((v) => v.type == tipo);
+        const rc = array.reduce((resul, v) => {
+          return (resul += v.item + " = " + v.nota + "<br>");
+        }, "<hr>>>> <strong>Apartado de " + tipo.toUpperCase() + "</strong> <<<<br>");
+        return rc;
+      }
 
+      vista = viewTipo(sum, "cono");
+      vista += viewTipo(sum, "habi");
+      vista += viewTipo(sum, "idio");
 
-function ctlCuantif(value, tot) {
-console.log(">>" + value);
-xVal = Number(value);
-if (isNaN(xVal)) {
-    return value;
-} 	
-tot += xVal;
-if (tot > max) {
-    return max;
-}
-return tot;
-}
+      document.getElementById("demo").innerHTML =
+        arrWork + "<hr>" + JSON.stringify(sum) + vista;
 
-console.log(sum);
-document.getElementById("demo").innerHTML = arrWork +  "<br>" + sum;
-</script>
-
-</body>
-</html> 
+      console.log(sum);
+      //alert(JSON.stringify(sum));
+    </script>
+  </body>
+</html>

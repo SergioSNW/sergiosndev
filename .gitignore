@@ -16,3 +16,4 @@ app/public/wp-content/*
 app/public/wp-content/themes/*
 !eventhorizon/
 
+app/public/wp-content/mu-plugins/health-check-troubleshooting-mode.php

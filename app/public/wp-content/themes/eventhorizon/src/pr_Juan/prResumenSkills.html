@@ -5,12 +5,30 @@
     <h2>Version 1.2</h2>
 
     <p id="demo"></p>
-    <script type="text/javascript" src="./pr_Juan/masterskills.js"></script>
+    <script type="text/javascript" src="./masterskills.js"></script>
 
     <script>
-      // import masterSkills from "./pr_Juan/masterskills.js";
+      const recopila = [];
+      const requestURL = "http://donalibros.jc/wp-json/wp/v2/libro";
+      const requestURL0 =
+        "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json";
+      const request = new XMLHttpRequest();
+      request.open("GET", requestURL);
+      request.responseType = "json";
+      request.send();
+      request.onload = function () {
+        const superHeroes = request.response;
+        console.log(superHeroes);
+        console.log(superHeroes[0].acf.skill);
+        superHeroes.map(v => {recopila.push(v.id)});
+        // superHeroes.map(v => {recopila.push(v.acf.skill.name)});
+        console.log(recopila);
+        // populateHeader(superHeroes);
+        // showHeroes(superHeroes);
+      };
+
       var arrWork = [
-        "Español+Nativo",
+        "Español+Nativooo",
         "Guapo+0",
         "React-JS+2",
         "Trabajo en equipo+0",

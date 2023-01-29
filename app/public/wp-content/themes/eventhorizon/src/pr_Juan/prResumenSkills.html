@@ -11,6 +11,7 @@
       const recopila1 = [];
       const recopila2 = [];
       var arrWork = [];
+      var arrWorkBIS = [];
 
       // INI - Recopilacion desde la propia BBDD a traves de la API
       const requestURL = "http://donalibros.jc/wp-json/wp/v2/libro";
@@ -34,7 +35,18 @@
             });
           }
         });
+
+        //test de recopilacion en un solo bloque
+        request.response.map( v => {
+          if (v.acf.skill) v.acf.skill.forEach( v => {
+            arrWorkBIS.push(v.name)
+            // console.log(":: ", v.name)
+          })
+        })
+
         console.log("arrWork: ", arrWork);
+        console.log("arrWorkBIS: ", arrWorkBIS);
+        console.log("Son iguales?: ", arrWork.sort === arrWorkBIS.sort)
         // FIN - Recopilacion desde la propia BBDD a traves de la API
         
         // // INI - Recopilacion de prueba inicial

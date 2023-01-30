@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>JavaScript Test Resumen Skills</h2>
+    <h2>Version 2.2 c/FETCH</h2>
+
+    <p id="demo"></p>
+    <script type="text/javascript" src="./masterskills.js"></script>
+
+    <script>
+      var arrWork = [];
+
+      // INI - Recopilacion desde la propia BBDD a traves de la API
+      const requestURL = "http://donalibros.jc/wp-json/wp/v2/libro";
+      fetch(requestURL)
+        .then((res) => res.json())
+        .then((res) => {
+          res.map((v) => {
+            if (v.acf.skill) {
+              v.acf.skill.forEach((element) => {
+                arrWork.push(element.name);
+            });
+            }
+          });
+          console.log("Recopilado: ", arrWork);
+          var sum = masterSkills(arrWork);
+          vista = viewTipo(sum, "cono");
+          vista += viewTipo(sum, "habi");
+          vista += viewTipo(sum, "idio");
+          
+          document.getElementById("demo").innerHTML =
+          arrWork + "<hr>" + JSON.stringify(sum) + vista;
+        })
+        .catch((err) => console.error(err));
+        // FIN - Recopilacion desde la propia BBDD a traves de la API
+
+      document.getElementById("demo").innerHTML = "Cargando ...";
+    </script>
+  </body>
+</html>

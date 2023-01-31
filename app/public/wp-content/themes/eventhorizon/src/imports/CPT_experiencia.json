@@ -1,9 +1,9 @@
 {
-    "trabajos": {
-        "name": "trabajos",
-        "label": "Trabajos",
-        "singular_label": "Trabajo",
-        "description": "Experiencias profesionales ",
+    "jobs": {
+        "name": "jobs",
+        "label": "Jobs",
+        "singular_label": "Job",
+        "description": "Professional experiences",
         "public": "true",
         "publicly_queryable": "true",
         "show_ui": "true",

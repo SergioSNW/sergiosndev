@@ -1,19 +1,15 @@
 # Ignore everything in the root except the "app/public" directory.
-/*
+
 !.gitignore
-!app/
-
-#Ignore everything within public's root except for wp-content.
-app/public/*
-!wp-content
-
+/app
+/conf
+/logs
 #Ignore everything within wp-content except for must-use-plugins and the themes folder.
-app/public/wp-content/*
-!mu-plugins/
-!themes/
 
-#Within the themes ignore any other theme that is not eventhorizon (the parent default 2022).
-app/public/wp-content/themes/*
-!eventhorizon/
+!plugins/skills-manager
+!mu-plugins
+!themes/eventhorizon
 
-app/public/wp-content/mu-plugins/health-check-troubleshooting-mode.php
+node_modules
+*license
+app/public/license.txt

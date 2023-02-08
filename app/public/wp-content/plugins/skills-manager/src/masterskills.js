@@ -1,5 +1,5 @@
 //  - Importante para import/export:
-//    Solo hay que exportar las funciones principales que se van a 
+//    Solo hay que exportar las funciones principales que se van a
 //    llamar desde el importador; las funciones de apoyo no deben
 //    ser exportadas. Aqui, solo se exporta prFetch
 
@@ -7,6 +7,22 @@
 //    ya que deben mantener su valor entre llamadas
 var it, cmp, total, result;
 var displ = 1; // switch para displayar (si=1/no=0)
+
+export function tratarRecopSkills(bigArray) {
+  var arrWork = [];
+  let sum = [];
+  bigArray.map((v) => {
+    if (v.acf.skill) {
+      v.acf.skill.forEach((element) => {
+        arrWork.push(element.name);
+      });
+    }
+  });
+  if (displ) console.log("prFetch> Skills recopilados: ", arrWork);
+  sum = masterSkills(arrWork);
+  if (displ) console.log("prFetch> Fase-2: Generado el master: ", sum);
+  return sum;
+}
 
 export function prFetch(uri, label) {
   var arrWork = [];
@@ -25,7 +41,7 @@ export function prFetch(uri, label) {
       if (displ) console.log("prFetch> Skills recopilados: ", arrWork);
       sum = masterSkills(arrWork);
       if (displ) console.log("prFetch> Fase-2: Generado el master: ", sum);
-      return sum
+      return sum;
       vista = viewTipo(sum, "cono");
       vista += viewTipo(sum, "habi");
       vista += viewTipo(sum, "idio");
@@ -37,8 +53,8 @@ export function prFetch(uri, label) {
     .catch((err) => console.error(err));
 }
 
-export function viewTipo(array, tipo) {
-  if (displ) console.log("viewTipo> parm-in: ", array, tipo)
+function viewTipo(array, tipo) {
+  if (displ) console.log("viewTipo> parm-in: ", array, tipo);
   array = array.filter((v) => v.type == tipo);
   const rc = array.reduce((resul, v) => {
     return (resul += v.item + " = " + v.nota + "<br>");
@@ -94,7 +110,6 @@ function genOut(item, nota) {
   const type = nota == 0 ? "habi" : nota > 0 ? "cono" : "idio";
   return { type, item, nota };
 }
-
 
 function retardo(delay) {
   let timerId = setTimeout(function plan() {

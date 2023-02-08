@@ -1,11 +1,10 @@
 import "./index.scss";
 import { useSelect } from "@wordpress/data";
-import { prFetch, viewTipo } from "./masterskills";
+import { tratarRecopSkills } from "./masterskills";
 
 wp.blocks.registerBlockType("ourplugin/cv-skills", {
   title: "Skills for CV",
-  description:
-    "Recolect dinamicly skills to add Curriculum Vitae ",
+  description: "Recolect dinamicly skills to add Curriculum Vitae ",
   icon: "welcome-learn-more",
   category: "common",
   attributes: {
@@ -18,16 +17,26 @@ wp.blocks.registerBlockType("ourplugin/cv-skills", {
 });
 
 function EditComponent(props) {
-  // const allProfs = useSelect((select) => {
-  //   return select("core").getEntityRecords("postType", "professor", {
-  //     per_page: -1,
-  //   });
-  // });
+  const skCourses = useSelect((select) => {
+    return select("core").getEntityRecords("postType", "courses", {
+      per_page: -1,
+    });
+  });
 
-  const requestURL = "http://donalibros.jc/wp-json/wp/v2/libro";
-  const allSkills = prFetch(requestURL, "salida_Fetch");
+  const skJobs = useSelect((select) => {
+    return select("core").getEntityRecords("postType", "jobs", {
+      per_page: -1,
+    });
+  });
 
-  // if (allSkills == undefined) return <p>Cargando ...</p>;
+  if (skJobs == undefined || skCourses == undefined) return <p>Cargando ...</p>;
+  console.log("carga de Jobs:", skJobs);
+  console.log("carga de Courses:", skCourses);
+  const mstSkills = tratarRecopSkills(skJobs.concat(skCourses));
+  console.log("nuevo master: ", mstSkills);
+
+  // const requestURL = "http://donalibros.jc/wp-json/wp/v2/libro";
+  // const allSkills = prFetch(requestURL, "salida_Fetch");
 
   console.log("ha pasado el if");
 
@@ -43,7 +52,7 @@ function EditComponent(props) {
         <select
           onChange={(e) => props.setAttributes({ profId: e.target.value })}
         >
-          <option value="">Selecciona un profesor ...</option>
+          <option value="">Skill-type to include ...</option>
           {allProfs.map((prof) => {
             return (
               <option
@@ -56,10 +65,13 @@ function EditComponent(props) {
             );
           })}
         </select>
-        We will have a select dropdown form element here.
+        <div>We will have a select dropdown form element here.</div>
       </div>
       <div>
-        <p>Se supone que aqui se debe mostar el resultado de: viewTipo(allSkills, props.attributes.profId)</p>
+        <p>
+          Se supone que aqui se debe mostar el resultado de: viewTipo(allSkills,
+          props.attributes.profId)
+        </p>
       </div>
     </div>
   );

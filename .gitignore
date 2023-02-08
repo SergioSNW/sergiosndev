@@ -1,15 +1,13 @@
 # Ignore everything in the root except the "app/public" directory.
 
 !.gitignore
-/app
 /conf
 /logs
 #Ignore everything within wp-content except for must-use-plugins and the themes folder.
 
+/app
 !plugins/skills-manager
 !mu-plugins
-!themes/eventhorizon
+!themes/eventhorizon/*
 
 node_modules
-*license
-app/public/license.txt

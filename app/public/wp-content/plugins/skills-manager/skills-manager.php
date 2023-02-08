@@ -19,7 +19,7 @@ class SkillsManager {
     wp_register_script('skillsManagerScript', plugin_dir_url(__FILE__) . 'build/index.js', array('wp-blocks', 'wp-i18n', 'wp-editor'));
     wp_register_style('skillsManagerStyle', plugin_dir_url(__FILE__) . 'build/index.css');
 
-    register_block_type('ourplugin/CV-skills', array(
+    register_block_type('ourplugin/cv-skills', array(
       'render_callback' => [$this, 'renderCallback'],
       'editor_script' => 'skillsManagerScript',
       'editor_style' => 'skillsManagerStyle'

@@ -1,7 +1,149 @@
 [
     {
+        "key": "group_63e40be9821c6",
+        "title": "CF Courses",
+        "fields": [
+            {
+                "key": "field_63e40beafb067",
+                "label": "Course visible",
+                "name": "course_visible",
+                "aria-label": "",
+                "type": "true_false",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "True -> add to CV",
+                "default_value": 1,
+                "ui": 0,
+                "ui_on_text": "",
+                "ui_off_text": ""
+            },
+            {
+                "key": "field_63e40cc8fb068",
+                "label": "Finish date",
+                "name": "finish_date",
+                "aria-label": "",
+                "type": "date_picker",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "display_format": "d\/m\/Y",
+                "return_format": "d\/m\/Y",
+                "first_day": 1
+            },
+            {
+                "key": "field_63e40d68fb069",
+                "label": "Course Name",
+                "name": "course_name",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "Definition of course",
+                "maxlength": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_63e40d8ffb06a",
+                "label": "Place",
+                "name": "place",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_63e40da6fb06b",
+                "label": "Description",
+                "name": "description",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_63e40dbbfb06c",
+                "label": "Certificate",
+                "name": "certificate",
+                "aria-label": "",
+                "type": "file",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "id",
+                "library": "all",
+                "min_size": "",
+                "max_size": "",
+                "mime_types": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "courses"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "show_in_rest": 0
+    },
+    {
         "key": "group_63d25a0b12ca0",
-        "title": "CF Experiencias",
+        "title": "CF Trabajos",
         "fields": [
             {
                 "key": "field_63d267ebd933a",
@@ -145,7 +287,7 @@
                 {
                     "param": "post_type",
                     "operator": "==",
-                    "value": "experiencia"
+                    "value": "jobs"
                 }
             ]
         ],
@@ -192,14 +334,14 @@
                 {
                     "param": "post_type",
                     "operator": "==",
-                    "value": "libro"
+                    "value": "jobs"
                 }
             ],
             [
                 {
                     "param": "post_type",
                     "operator": "==",
-                    "value": "experiencia"
+                    "value": "courses"
                 }
             ]
         ],

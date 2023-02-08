@@ -2,7 +2,7 @@ import "./index.scss";
 import { useSelect } from "@wordpress/data";
 import { prFetch, viewTipo } from "./masterskills";
 
-wp.blocks.registerBlockType("ourplugin/CV-skills", {
+wp.blocks.registerBlockType("ourplugin/cv-skills", {
   title: "Skills for CV",
   description:
     "Recolect dinamicly skills to add Curriculum Vitae ",
@@ -38,8 +38,8 @@ function EditComponent(props) {
   ];
 
   return (
-    <div className="featured-professor-wrapper">
-      <div className="professor-select-container">
+    <div>
+      <div>
         <select
           onChange={(e) => props.setAttributes({ profId: e.target.value })}
         >

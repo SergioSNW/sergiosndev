@@ -1,78 +1,57 @@
-import "./index.scss";
-import { useSelect } from "@wordpress/data";
-import { tratarRecopSkills } from "./masterskills";
-
-wp.blocks.registerBlockType("ourplugin/cv-skills", {
-  title: "Skills for CV",
-  description: "Recolect dinamicly skills to add Curriculum Vitae ",
-  icon: "welcome-learn-more",
-  category: "common",
-  attributes: {
-    profId: { type: "string" },
-  },
-  edit: EditComponent,
-  save: function () {
-    return null;
-  },
-});
-
-function EditComponent(props) {
-  const skCourses = useSelect((select) => {
-    return select("core").getEntityRecords("postType", "courses", {
-      per_page: -1,
-    });
-  });
-
-  const skJobs = useSelect((select) => {
-    return select("core").getEntityRecords("postType", "jobs", {
-      per_page: -1,
-    });
-  });
-
-  if (skJobs == undefined || skCourses == undefined) return <p>Cargando ...</p>;
-  console.log("carga de Jobs:", skJobs);
-  console.log("carga de Courses:", skCourses);
-  const mstSkills = tratarRecopSkills(skJobs.concat(skCourses));
-  console.log("nuevo master: ", mstSkills);
-
-  // const requestURL = "http://donalibros.jc/wp-json/wp/v2/libro";
-  // const allSkills = prFetch(requestURL, "salida_Fetch");
-
-  console.log("ha pasado el if");
-
-  const allProfs = [
-    { id: "cono", title: "Conocimientos" },
-    { id: "habi", title: "Habilidades" },
-    { id: "idio", title: "Idiomas" },
-  ];
-
-  return (
-    <div>
-      <div>
-        <select
-          onChange={(e) => props.setAttributes({ profId: e.target.value })}
-        >
-          <option value="">Skill-type to include ...</option>
-          {allProfs.map((prof) => {
-            return (
-              <option
-                value={prof.id}
-                selected={props.attributes.profId == prof.id}
-              >
-                {console.log(prof.title.rendered)}
-                {prof.title}
-              </option>
-            );
-          })}
-        </select>
-        <div>We will have a select dropdown form element here.</div>
-      </div>
-      <div>
-        <p>
-          Se supone que aqui se debe mostar el resultado de: viewTipo(allSkills,
-          props.attributes.profId)
-        </p>
-      </div>
-    </div>
-  );
+// Import CSS. 
+// import './style.scss';
+// import './editor.scss';
+const { __ } = wp.i18n;
+const { registerBlockType, query } = wp.blocks;
+function RandomImage( { category } ) {
+    // const src = 'https://placeimg.com/320/220/' + category;
+    const fecha = new Date();
+    console.log("fecha: ", fecha.toUTCString())
+    return <p>{fecha.toUTCString()}</p>;
+    return <img src={ src } alt={ category } />; 
 }
+registerBlockType( 'ourplugin/cv-skills', {
+    title: __( 'Random Image' ),
+    icon: 'format-image',
+    category: 'common',
+    keywords: [
+        __( 'random' ),
+        __( 'image' )
+    ],
+    attributes: {
+        category: {
+            type: 'string',
+            default: 'nature'
+        }
+    },
+    edit: function( props ) {
+        const { attributes: { category }, setAttributes } = props;
+        function setCategory( event ) {
+            const selected = event.target.querySelector( 'option:checked' );
+            setAttributes( { category: selected.value } );
+            event.preventDefault();
+        }
+        return (
+            <div className={ props.className }>
+                <RandomImage category={ category } /> 
+                <form onSubmit={ setCategory }>
+                    <select value={ category } onChange={ setCategory }>
+                        <option value="animals">Animals</option> 
+                        <option value="arch">Architecture</option> 
+                        <option value="nature">Nature</option> 
+                        <option value="people">People</option> 
+                        <option value="tech">Tech</option> 
+                    </select> 
+                </form> 
+            </div> 
+        );
+    },
+    save: function( props ) {
+        const { attributes: { category } } = props;
+        return (
+            <div>
+                <RandomImage category={ category } /> 
+            </div> 
+        );
+    }
+} );

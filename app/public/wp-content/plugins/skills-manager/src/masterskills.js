@@ -6,7 +6,7 @@
 //  - Definicion de variables globales para que funcione resumeSkills
 //    ya que deben mantener su valor entre llamadas
 var it, cmp, total, result;
-var displ = 1; // switch para displayar (si=1/no=0)
+var displ = 0; // switch para displayar (si=1/no=0)
 
 export function tratarRecopSkills(bigArray) {
   var arrWork = [];

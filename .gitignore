@@ -6,6 +6,7 @@
 #Ignore everything within wp-content except for must-use-plugins and the themes folder.
 
 /app
+!app/wp-content
 !plugins/skills-manager
 !mu-plugins
 !themes/eventhorizon/*

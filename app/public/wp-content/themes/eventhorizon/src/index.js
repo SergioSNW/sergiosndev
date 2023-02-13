@@ -1,6 +1,11 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import "../css/style.scss"
 
-import TestComponent from "./TestComponent";
+// Our modules / classes
+import MobileMenu from "./modules/MobileMenu"
+import HeroSlider from "./modules/HeroSlider"
 
-ReactDOM.render(<TestComponent />, document.querySelector("#app"))
+// Instantiate a new object using our modules/classes
+const mobileMenu = new MobileMenu()
+const heroSlider = new HeroSlider()
+
+alert("hola, soy yo")

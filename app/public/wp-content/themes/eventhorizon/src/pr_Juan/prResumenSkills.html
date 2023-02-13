@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>JavaScript Test Resumen Skills</h2>
+    <h2>Version 2.1 c/HTTP Request</h2>
+
+    <p id="demo"></p>
+    <script type="text/javascript" src="./masterskills.js"></script>
+
+    <script>
+      const recopila1 = [];
+      const recopila2 = [];
+      var arrWork = [];
+      var arrWorkBIS = [];
+
+      // INI - Recopilacion desde la propia BBDD a traves de la API
+      const requestURL = "http://donalibros.jc/wp-json/wp/v2/libro";
+      const request = new XMLHttpRequest();
+      request.open("GET", requestURL);
+      request.responseType = "json";
+      request.send();
+      request.onload = function () {
+        // const recopila1 = request.response;
+        // console.log("rec1: ", recopila1);
+        
+        // recopila1.map((v) => recopila2.push(v.acf.skill));
+        // console.log("rec2: ", recopila2);
+        
+        // recopila2.forEach((n1) => {
+        //   if (n1) {
+        //     // console.log("n1: ", n1);
+        //     n1.map((n2) => {
+        //       // console.log("n2: ", n2.name);
+        //       arrWork.push(n2.name);
+        //     });
+        //   }
+        // });
+
+        //test de recopilacion en un solo bloque
+        request.response.map( v => {
+          if (v.acf.skill) v.acf.skill.forEach( v => {
+            arrWork.push(v.name)
+            // console.log(":: ", v.name)
+          })
+        })
+
+        console.log("arrWork: ", arrWork);
+        console.log("arrWorkBIS: ", arrWorkBIS);
+        console.log("Son iguales?: ", arrWork.sort() == arrWorkBIS.sort())
+
+        // FIN - Recopilacion desde la propia BBDD a traves de la API
+        
+        // // INI - Recopilacion de prueba inicial
+        // var arrWork = [
+        //   "Español+Nativooo",
+        //   "Guapo+0",
+        //   "React-JS+2",
+        //   "Trabajo en equipo+0",
+        // ];
+        // const myGirls = ["HTML+4", "Ingles+Practicamente bilingue"];
+        // const myBoys = ["HTML+1", "CSS+4", "Ordenado+0", "Apache+De p... madre"];
+
+        // // Simulacion de la recopilacion de todos los skills de todos los cursos
+        // arrWork = arrWork.concat(myGirls);
+        // arrWork = arrWork.concat(myBoys);
+        // arrWork = arrWork.concat(myBoys);
+        // arrWork = arrWork.concat(myGirls);
+        // // FIN - Recopilacion de prueba inicial
+
+        // Generacion del summary y de las diferentes vistas
+        var sum = masterSkills(arrWork);
+        vista = viewTipo(sum, "cono");
+        vista += viewTipo(sum, "habi");
+        vista += viewTipo(sum, "idio");
+
+        document.getElementById("demo").innerHTML =
+          arrWork + "<hr>" + JSON.stringify(sum) + vista;
+
+        console.log(sum);
+        //alert(JSON.stringify(sum));
+      };
+    </script>
+  </body>
+</html>
